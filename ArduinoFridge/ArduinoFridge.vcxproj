@@ -45,10 +45,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>E:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;E:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard;e:\Data\Timothy\documents\visual studio 2015\Projects\ArduinoFridge\ArduinoFridge;E:\Program Files (x86)\Arduino\libraries;E:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;E:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\kmv0mmkv.g0r\Micro Platforms\default\debuggers;E:\Data\Timothy\Documents\Arduino\libraries;e:\Data\Timothy\documents\visual studio 2015\Projects\TestProject\TestProject;E:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;E:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard;E:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\kmv0mmkv.g0r\Micro Platforms\default\debuggers\VM_DBG;E:\Program Files (x86)\Arduino\libraries;E:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;E:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\kmv0mmkv.g0r\Micro Platforms\default\debuggers;E:\Data\Timothy\Documents\Arduino\libraries;E:\Program Files (x86)\Arduino\hardware\tools\avr/avr/include/;E:\Program Files (x86)\Arduino\hardware\tools\avr//avr/include/avr/;E:\Program Files (x86)\Arduino\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;E:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard;e:\Data\Timothy\documents\visual studio 2015\Projects\ArduinoFridge\ArduinoFridge;E:\Program Files (x86)\Arduino\libraries;E:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;E:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\kmv0mmkv.g0r\Micro Platforms\default\debuggers;E:\Data\Timothy\Documents\Arduino\libraries;e:\Data\Timothy\documents\visual studio 2015\Projects\ArduinoFridge\ArduinoFridge;E:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;E:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard;E:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\kmv0mmkv.g0r\Micro Platforms\default\debuggers\VM_DBG;E:\Program Files (x86)\Arduino\libraries;E:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;E:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\kmv0mmkv.g0r\Micro Platforms\default\debuggers;E:\Data\Timothy\Documents\Arduino\libraries;E:\Program Files (x86)\Arduino\hardware\tools\avr/avr/include/;E:\Program Files (x86)\Arduino\hardware\tools\avr//avr/include/avr/;E:\Program Files (x86)\Arduino\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>e:\Data\Timothy\documents\visual studio 2015\Projects\ArduinoFridge\ArduinoFridge\__vm\.ArduinoFridge.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;F_CPU=16000000L;ARDUINO=166;ARDUINO_AVR_DUEMILANOVE;ARDUINO_ARCH_AVR;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=166;ARDUINO_AVR_DUEMILANOVE;ARDUINO_ARCH_AVR;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -74,7 +74,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="def.h" />
+    <ClInclude Include="fridge.h" />
     <ClInclude Include="__vm\.ArduinoFridge.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="fridge.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
