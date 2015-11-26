@@ -12,6 +12,7 @@
 #define _VSARDUINO_H_
 #define __AVR_ATmega328p__
 #define __AVR_ATmega328P__
+#define _VMDEBUG 1
 #define F_CPU 16000000L
 #define ARDUINO 166
 #define ARDUINO_AVR_DUEMILANOVE
@@ -85,4 +86,7 @@ extern "C" void __cxa_pure_virtual() {;}
 #define portInputRegister(P)
 #define portModeRegister(P)
 #include <..\ArduinoFridge\ArduinoFridge.ino>
+#include <..\ArduinoFridge\def.h>
+#include <..\ArduinoFridge\fridge.cpp>
+#include <..\ArduinoFridge\fridge.h>
 #endif
