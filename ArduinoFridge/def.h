@@ -1,0 +1,12 @@
+#pragma once
+
+enum DIGITAL_PINS
+{
+	DIGITAL_PIN_FORCE = 12,
+	DIGITAL_PIN_ERROR = 13
+};
+
+enum ANALOG_PINS
+{
+	ANALOG_PIN_FORCE = 0
+};
