@@ -25,6 +25,7 @@ void setup()
 	pFridge = new CFridge();
 	if( !pFridge )
 		isError = true;
+	pFridge->initialize();
 
 	// Serial
 	Serial.begin( 9600 );
@@ -41,13 +42,29 @@ void loop()
 		digitalWrite( DIGITAL_PIN_ERROR, HIGH ); // Turn on the error led
 	}
 
+	// Perform fridge loop
+	if( !pFridge->loop() )
+		isError = true;
+
 	// Check for force
-	iForceVal = analogRead( ANALOG_PIN_FORCE );
+	iForceVal = analogRead( ANALOG_PIN_FORCE0 );
 	if( iForceVal > 512 )
 		digitalWrite( DIGITAL_PIN_FORCE, HIGH );
 	else
 		digitalWrite( DIGITAL_PIN_FORCE, LOW );
 
 	// Print a test value
-	Serial.println( iForceVal );
+	//Serial.println( iForceVal );
+}
+
+
+void serialEvent()
+{
+	while( Serial.available() ) {
+		char inChar = (char)Serial.read();
+		if( inChar == 'c' ) {
+			pFridge->calibrate( 4000 );
+			break;
+		}
+	}
 }
