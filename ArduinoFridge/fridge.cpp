@@ -5,9 +5,19 @@
 CFridge::CFridge()
 {
 	m_fridgeStage = 0;
+	m_pDeviceConnection = NULL;
+	m_pFridgePacket = NULL;
 }
 CFridge::~CFridge()
 {
+	if( m_pDeviceConnection ) {
+		delete m_pDeviceConnection;
+		m_pDeviceConnection = NULL;
+	}
+	if( m_pFridgePacket ) {
+		delete m_pFridgePacket;
+		m_pFridgePacket = NULL;
+	}
 }
 
 bool CFridge::initialize()
@@ -18,14 +28,25 @@ bool CFridge::initialize()
 		m_forceValues[i] = 0;
 	}
 	m_fridgeStage = FRIDGE_STAGE_IDLE;
+	// Set up the device connection
+	m_pDeviceConnection = new CSerialConnection();
+	m_pFridgePacket = new FridgePacket();
+	m_pDeviceConnection->setCurrentPacket( m_pFridgePacket );
+	m_pDeviceConnection->connect();
 }
 
 bool CFridge::loop()
 {
+
+
 	// Check stage
 	switch( m_fridgeStage )
 	{
 	case FRIDGE_STAGE_IDLE:
+		// Update the packet
+		m_pFridgePacket->itempercent0 = this->getForcePercentage( FORCE_RESISTOR0 );
+		m_pFridgePacket->itempercent1 = this->getForcePercentage( FORCE_RESISTOR1 );
+		m_pDeviceConnection->doLoop();
 		break;
 	case FRIDGE_STAGE_CALIBRATE:
 		// Check if the calibration period is over
@@ -91,6 +112,11 @@ ForceResValue CFridge::readValue( unsigned char resistor )
 	}
 }
 
-float CFridge::getForcePercentage( unsigned char resistor ) {
-	return 
+unsigned char CFridge::getForcePercentage( unsigned char resistor )
+{
+	int value;
+
+	// Read the value
+	value = this->readValue( resistor );
+	return (unsigned char)(((float)value/(float)m_resistorMaxs[resistor])*100.0f);
 }

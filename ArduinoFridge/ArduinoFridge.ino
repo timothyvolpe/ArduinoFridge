@@ -17,24 +17,28 @@ void setup()
 	isErrorLit = false;
 	pFridge = NULL;
 
+	// Serial
+	Serial.begin( 9600 );
+
 	// Setup digital pins
 	pinMode( DIGITAL_PIN_FORCE, OUTPUT ); // Force LED
 	pinMode( DIGITAL_PIN_ERROR, OUTPUT ); // Error LED
+
+#ifdef DEBUG_PRINT
+	Serial.println( "STARTING!" );
+#endif
 
 	// Create the fridge class
 	pFridge = new CFridge();
 	if( !pFridge )
 		isError = true;
 	pFridge->initialize();
-
-	// Serial
-	Serial.begin( 9600 );
 }
 
 // the loop function runs over and over again until power down or reset
 void loop()
 {
-	int iForceVal;
+	int iForceVal, iForceVal2;
 
 	// Check for error
 	if ( isError && !isErrorLit ) {
@@ -47,14 +51,16 @@ void loop()
 		isError = true;
 
 	// Check for force
-	iForceVal = analogRead( ANALOG_PIN_FORCE0 );
+	/*iForceVal = analogRead( ANALOG_PIN_FORCE0 );
+	iForceVal2 = analogRead( ANALOG_PIN_FORCE1 );
+	Serial.print( iForceVal );
+	Serial.print( "\n" );
+	Serial.print( iForceVal2 );
+	Serial.print( "\n" );
 	if( iForceVal > 512 )
 		digitalWrite( DIGITAL_PIN_FORCE, HIGH );
 	else
-		digitalWrite( DIGITAL_PIN_FORCE, LOW );
-
-	// Print a test value
-	//Serial.println( iForceVal );
+		digitalWrite( DIGITAL_PIN_FORCE, LOW );*/
 }
 
 

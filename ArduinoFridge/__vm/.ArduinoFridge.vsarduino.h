@@ -88,4 +88,6 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <..\ArduinoFridge\def.h>
 #include <..\ArduinoFridge\fridge.cpp>
 #include <..\ArduinoFridge\fridge.h>
+#include <..\ArduinoFridge\network.cpp>
+#include <..\ArduinoFridge\network.h>
 #endif

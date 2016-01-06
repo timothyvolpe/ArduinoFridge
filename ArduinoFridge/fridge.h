@@ -1,5 +1,7 @@
 #pragma once
 
+#include "network.h"
+
 enum : unsigned short
 {
 	FORCE_RESISTOR0 = 0,
@@ -11,7 +13,7 @@ enum : unsigned char
 {
 	FRIDGE_STAGE_UNKNOWN = 0,
 	FRIDGE_STAGE_IDLE,
-	FRIDGE_STAGE_CALIBRATE
+	FRIDGE_STAGE_CALIBRATE,
 };
 
 typedef unsigned short ForceResValue;
@@ -29,6 +31,9 @@ private:
 	unsigned int m_resistorMaxs[FORCE_RESISTOR_COUNT];
 
 	unsigned int m_forceValues[FORCE_RESISTOR_COUNT];
+
+	CDeviceConnection *m_pDeviceConnection;
+	FridgePacket *m_pFridgePacket;
 public:
 	CFridge();
 	~CFridge();
@@ -47,7 +52,7 @@ public:
 	//		ForceResValue resistor - the resistor to read from
 	ForceResValue readValue( unsigned char resistor );
 
-	// float getForcePercentage() - returns the force percentage of the calibrated maximum
+	// unsigned char getForcePercentage() - returns the force percentage of the calibrated maximum
 	//		unsigned char resistor - the resistor to read from
-	float getForcePercentage( unsigned char resistor );
+	unsigned char getForcePercentage( unsigned char resistor );
 };
